@@ -79,6 +79,7 @@ void core::mandel_draw_path(){
 
         if ( draw_points ) {
             al_draw_pixel(ix, iy, al_map_rgb(255, 0, 0));
+            al_draw_pixel(old_ix, old_iy, al_map_rgb(255, 0, 0));
         }
 
         old_iy = iy;
@@ -304,6 +305,17 @@ void core::loop(){
 
             sprintf(output, "mouse: %3d %3d\n", mouse_x, mouse_y);
             al_draw_text(font, al_map_rgb(255,255,255), (20), (40), ALLEGRO_ALIGN_LEFT, output);
+
+
+            sprintf(output, "Draw lines = %s\n", draw_line ? "On" : "Off");
+            al_draw_text(font, al_map_rgb(255,255,255), (SCREEN_W - 200), (60), ALLEGRO_ALIGN_LEFT, output);
+
+            sprintf(output, "Draw points = %s\n", draw_points ? "On" : "Off");
+            al_draw_text(font, al_map_rgb(255,255,255), (SCREEN_W - 200), (80), ALLEGRO_ALIGN_LEFT, output);
+
+            sprintf(output, "Lines cursor= %s\n", draw_cursor ? "On" : "Off");
+            al_draw_text(font, al_map_rgb(255,255,255), (SCREEN_W - 200), (100), ALLEGRO_ALIGN_LEFT, output);
+
 
             draw_fps();
 
